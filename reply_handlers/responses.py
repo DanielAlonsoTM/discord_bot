@@ -18,7 +18,8 @@ def handle_message(message: str):
 
 
 def handle_custom_message(motive: str):
-    if motive == 'url':
-        return 'This message is an url, will be put in the channel [CHANNEL]'
-    else:
-        return 'Not implemented yet'
+    match motive:
+        case 'url':
+            return 'This message is an url, will be put in the channel [CHANNEL]'
+        case _:
+            return 'Not implemented yet'
