@@ -17,14 +17,18 @@
         * Mention Everyone
         * Use External Stickers
         * Add Reactions
+    * Voice Permissions
+        * Connect
+        * Speak
 
-### Python version
-Python 3.11.2
+### Python and pip version
+* Python: 3.11.2
+* pip3: 22.3.1
 
 ### Packages to install
-* discord
-* jproperties
-* jproperties
-* youtube-dl
+* discord: 2.2.2
+* jproperties: 2.1.1
+* validators: 0.20.0
+* youtube-dl: 2021.12.17
 
-Command to install: `pip3 install discord jproperties jproperties youtube-dl`
+Command to install: `pip3 install discord jproperties validators youtube-dl`
