@@ -1,5 +1,5 @@
 import discord
-import responses
+import reply_handlers.responses as responses
 from jproperties import Properties
 from utils.url_check import url_check
 

@@ -1,4 +1,4 @@
-import bot
+import bot_core.bot as bot
 
 
 if __name__ == '__main__':
