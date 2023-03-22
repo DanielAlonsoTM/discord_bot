@@ -22,11 +22,25 @@ def commands_music(bot: commands.bot):
         else:
             await ctx.send('The bot is not connected to a voice channel')
 
-    @bot.command(name='play', help='To play song')
-    async def play(ctx, url):
+    # @bot.command(name='play', help='To play song')
+    # async def play(ctx, url):
+    #     try:
+    #         async with ctx.typing():
+    #             player = await YTDLSource.from_url(url, loop=bot.loop)
+    #             ctx.voice_client.play(player, after=lambda e: print(
+    #                 f'Player error: {e}') if e else None)
+
+    #         await ctx.send('**Now playing:** {}'.format(player.title))
+    #     except Exception as e:
+    #         print(f'Error: {e}')
+    #         await ctx.send('An error ocurred while I tried to play this song. Check the log')
+
+    @bot.command(name='stream', help='To play song')
+    async def stream(ctx, url):
+        # Streams from a url (same as play, but doesn't predownload)
         try:
             async with ctx.typing():
-                player = await YTDLSource.from_url(url, loop=bot.loop)
+                player = await YTDLSource.from_url(url, loop=bot.loop, stream=True)
                 ctx.voice_client.play(player, after=lambda e: print(
                     f'Player error: {e}') if e else None)
 
