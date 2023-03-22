@@ -1,5 +1,5 @@
 from discord.ext import commands
-from bot_core.ytdl import YTDLSource
+from bot_core.engines.ytdl import YTDLSource
 
 
 def commands_music(bot: commands.bot):
@@ -23,6 +23,7 @@ def commands_music(bot: commands.bot):
             await ctx.send('The bot is not connected to a voice channel')
 
     # @bot.command(name='play', help='To play song')
+    # # Download source and play locally
     # async def play(ctx, url):
     #     try:
     #         async with ctx.typing():
