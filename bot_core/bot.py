@@ -29,19 +29,21 @@ def run_discord_bot():
 
     # Create client, bot and intents
     intents = discord.Intents.all()
-    client = discord.Client(intents=intents)
     bot = commands.Bot(command_prefix='.', intents=intents)
 
-    @client.event
+    @bot.event
     async def on_ready():
-        print(f'Boot {client.user} is now running')
+        print(f'Boot {bot.user} is now running')
 
-    @client.event
+    @bot.event
     async def on_message(message):
-        # Make sure bot doesn't get stuck in an infinite loop
-        if message.author == client.user:
+        # bot.process_commands(msg) is a couroutine that must be called here since we are overriding the on_message event
+        await bot.process_commands(message)
+        
+        # Make sure bot doesn't get stuck in an infinite loop       
+        if message.author == bot.user:
             return
-
+        
         # Get data about the user
         username = str(message.author)
         user_message = str(message.content)
@@ -50,7 +52,7 @@ def run_discord_bot():
         # Debug printing
         print(
             f"================\n{username} said: '{user_message}' \nChannel: ({channel})\n================\n")
-
+        
         if len(user_message) > 0:
             # Check if message is an url
             if url_check(user_message):
@@ -65,30 +67,6 @@ def run_discord_bot():
         else:
             await send_message(message, user_message, is_private=False)
 
-    @bot.event
-    async def on_ready():
-        print(f'Boot {bot.user} is now running')
-        
-    @bot.event
-    async def on_message(message) :
-        # bot.process_commands(msg) is a couroutine that must be called here since we are overriding the on_message event
-        await bot.process_commands(message) 
-        if str(message.content).lower() == "hello":
-            await message.channel.send('Hi!')
-        
-        if str(message.content).lower() in ['swear_word1','swear_word2']:
-            await message.channel.purge(limit=1)
+    commands_music(bot)
 
-    # @bot.command(name='stop', help='Stops the song')
-    # async def stop(ctx):
-    #     voice_client = ctx.message.guild.voice_client
-
-    #     if voice_client.is_playing():¡¡
-    #         await voice_client.stop()
-    #     else:
-    #         await ctx.send('The bot is not playing anything at the moment')
-
-    commands_music(bot);
-
-    # client.run(token_key)
     bot.run(token_key)
