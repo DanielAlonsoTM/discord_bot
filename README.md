@@ -2,8 +2,8 @@
 
 ### Necessary permissions
 * Scopes
-** bot
-** applications.commands
+    * bot
+    * applications.commands
 
 * Bot Permissions
     * General Permissions
