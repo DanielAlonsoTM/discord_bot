@@ -1,7 +1,9 @@
 import discord
+from discord.ext import commands
 import reply_handlers.responses as responses
 from jproperties import Properties
 from utils.url_check import url_check
+from bot_core.commands.music import commands_music
 
 
 async def send_message(message: str, user_message: str, is_private: bool, is_custom: bool = None, motive: str = None):
@@ -25,10 +27,10 @@ def run_discord_bot():
 
     token_key = configs.get('TOKEN').data
 
-    # Create client and intents
+    # Create client, bot and intents
     intents = discord.Intents.all()
-
     client = discord.Client(intents=intents)
+    bot = commands.Bot(command_prefix='.', intents=intents)
 
     @client.event
     async def on_ready():
@@ -63,4 +65,30 @@ def run_discord_bot():
         else:
             await send_message(message, user_message, is_private=False)
 
-    client.run(token_key)
+    @bot.event
+    async def on_ready():
+        print(f'Boot {bot.user} is now running')
+        
+    @bot.event
+    async def on_message(message) :
+        # bot.process_commands(msg) is a couroutine that must be called here since we are overriding the on_message event
+        await bot.process_commands(message) 
+        if str(message.content).lower() == "hello":
+            await message.channel.send('Hi!')
+        
+        if str(message.content).lower() in ['swear_word1','swear_word2']:
+            await message.channel.purge(limit=1)
+
+    # @bot.command(name='stop', help='Stops the song')
+    # async def stop(ctx):
+    #     voice_client = ctx.message.guild.voice_client
+
+    #     if voice_client.is_playing():¡¡
+    #         await voice_client.stop()
+    #     else:
+    #         await ctx.send('The bot is not playing anything at the moment')
+
+    commands_music(bot);
+
+    # client.run(token_key)
+    bot.run(token_key)
