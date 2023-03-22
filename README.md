@@ -32,4 +32,15 @@
 * youtube-dl: 2021.12.17
 * PyNaCl: 1.5.0
 
-Command to install: `pip3 install discord jproperties validators youtube-dl pynacl`
+#### Problems with youtube-dl
+In case to have problems with this package, follow the next steps to install a stable version
+```sh
+pip3 uninstall yt-dlp
+python3 -m pip install yt-dlp==2023.2.17
+```
+
+### Install Packages
+Command to install: 
+```sh
+pip3 install discord jproperties validators youtube-dl pynacl
+```
