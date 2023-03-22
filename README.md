@@ -6,17 +6,17 @@
 ** applications.commands
 
 * Bot Permissions
-** General Permissions
-*** Read Messages/View Channels
-** Text Permissions
-*** Send Messages
-*** Manage Messages
-*** Embed Links
-*** Attach Files
-*** Read Message History
-*** Mention Everyone
-*** Use External Stickers
-*** Add Reactions
+    * General Permissions
+        * Read Messages/View Channels
+    * Text Permissions
+        * Send Messages
+        * Manage Messages
+        * Embed Links
+        * Attach Files
+        * Read Message History
+        * Mention Everyone
+        * Use External Stickers
+        * Add Reactions
 
 ### Python version
 Python 3.11.2
