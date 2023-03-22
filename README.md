@@ -30,5 +30,6 @@
 * jproperties: 2.1.1
 * validators: 0.20.0
 * youtube-dl: 2021.12.17
+* PyNaCl: 1.5.0
 
 Command to install: `pip3 install discord jproperties validators youtube-dl`
