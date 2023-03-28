@@ -17,7 +17,7 @@ ytdl_format_options = {
     'default_search': 'auto',
     # bind to ipv4 since ipv6 addresses cause issues sometimes
     'source_address': '0.0.0.0',
-    'outtmpl': 'tmp/%(extractor_key)s/%(extractor)s-%(id)s-%(title)s.%(ext)s'
+    'outtmpl': 'tmp/%(extractor)s-%(id)s-%(title)s.%(ext)s'
 }
 
 ffmpeg_options = {
