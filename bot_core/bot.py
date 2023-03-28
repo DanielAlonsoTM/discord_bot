@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 from jproperties import Properties
-from bot_core.commands.music import commands_music
-from bot_core.commands.chat import commands_chat
+from bot_core.commands.music import Music
+from bot_core.commands.chat import Chat
 # from bot_core.listeners.kick import listener_kick
 
 
@@ -21,9 +21,11 @@ def run_discord_bot():
     @bot.event
     async def on_ready():
         print(f'Boot {bot.user} is now running')
+        
+        # Load Cogs
+        await bot.add_cog(Chat(bot))
+        await bot.add_cog(Music(bot))
 
     # listener_kick(bot)
-    commands_chat(bot)
-    commands_music(bot)
 
     bot.run(token_key)
