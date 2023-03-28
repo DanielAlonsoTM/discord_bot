@@ -2,14 +2,16 @@ from discord.ext import commands
 import random
 
 
-def commands_chat(bot: commands.bot):
-    @bot.command(name='hi', help='I will say hi for you')
-    async def hi(ctx):
+class Chat(commands.Cog, name='Chat Commands'):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command(name='hi', help='I will say hi for you')
+    async def hi(self, ctx):
         await ctx.send(f'Hi {ctx.author}')
 
-    @bot.command(name='joke', help='I will say a joke of your fat mom')
-    async def joke(ctx):
-
+    @commands.command(name='joke', brief='I will say a joke of your fat mom', help='I will say a joke of your fat mom')
+    async def joke(self, ctx):
         active_users = [
             'user A',
             'user B',
