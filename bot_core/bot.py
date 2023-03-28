@@ -21,7 +21,7 @@ def run_discord_bot():
     @bot.event
     async def on_ready():
         print(f'Boot {bot.user} is now running')
-        
+
         # Load Cogs
         await bot.add_cog(Chat(bot))
         await bot.add_cog(Music(bot))
