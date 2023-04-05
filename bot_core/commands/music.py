@@ -1,5 +1,6 @@
 from discord.ext import commands
 from bot_core.engines.ytdl import YTDLSource
+from utils.clean_tmp import clean_tmp
 
 
 class Music(commands.Cog, name='Music Commands'):
@@ -25,26 +26,29 @@ class Music(commands.Cog, name='Music Commands'):
         else:
             await ctx.send('The bot is not connected to a voice channel')
 
-    # @commands.command(name='play', help='To play song')
-    # # Download source and play locally
-    # async def play(self, ctx, url):
-    #     try:
-    #         async with ctx.typing():
-    #             player = await YTDLSource.from_url(url, loop=bot.loop)
-    #             ctx.voice_client.play(player, after=lambda e: print(
-    #                 f'Player error: {e}') if e else None)
+    # Download source and play locally
+    @commands.command(name='play', help='To play song')
+    async def play(self, ctx, url):
+        # Delete all files stored in tmp folder
+        clean_tmp()
 
-    #         await ctx.send('**Now playing:** {}'.format(player.title))
-    #     except Exception as e:
-    #         print(f'Error: {e}')
-    #         await ctx.send('An error ocurred while I tried to play this song. Check the log')
-
-    @commands.command(name='stream', help='To play song')
-    async def stream(self, ctx, url):
-        # Streams from a url (same as play, but doesn't predownload)
         try:
             async with ctx.typing():
-                player = await YTDLSource.from_url(url, loop=bot.loop, stream=True)
+                player = await YTDLSource.from_url(url, loop=self.bot.loop)
+                ctx.voice_client.play(player, after=lambda e: print(
+                    f'Player error: {e}') if e else None)
+
+            await ctx.send('**Now playing:** {}'.format(player.title))
+        except Exception as e:
+            print(f'Error: {e}')
+            await ctx.send('An error ocurred while I tried to play this song. Check the log')
+
+    # Streams from a url (same as play, but doesn't predownload)
+    @commands.command(name='stream', help='To play song')
+    async def stream(self, ctx, url):
+        try:
+            async with ctx.typing():
+                player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
                 ctx.voice_client.play(player, after=lambda e: print(
                     f'Player error: {e}') if e else None)
 
