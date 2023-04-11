@@ -1,6 +1,9 @@
 from discord.ext import commands
 from bot_core.engines.ytdl import YTDLSource
 from utils.clean_tmp import clean_tmp
+from models.song import Song
+
+queue_music = []
 
 
 class Music(commands.Cog, name='Music Commands'):
@@ -32,13 +35,28 @@ class Music(commands.Cog, name='Music Commands'):
         # Delete all files stored in tmp folder
         clean_tmp()
 
+        song: Song = Song()
+
         try:
             async with ctx.typing():
+                # Create player
                 player = await YTDLSource.from_url(url, loop=self.bot.loop)
+
+                # Create object
+                song.title = player.title
+                song.url = player.url
+                song.played = False
+
+                # Play song
                 ctx.voice_client.play(player, after=lambda e: print(
                     f'Player error: {e}') if e else None)
 
+            # Send message to channel
             await ctx.send('**Now playing:** {}'.format(player.title))
+
+            # Change song status
+            song.played = True
+
         except Exception as e:
             print(f'Error: {e}')
             await ctx.send('An error ocurred while I tried to play this song. Check the log')
