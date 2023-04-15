@@ -1,6 +1,6 @@
 from discord.ext import commands
 from bot_core.engines.ytdl import YTDLSource
-from utils.clean_tmp import clean_tmp
+from utils.tmp_handler import clean_tmp
 from models.song import Song
 
 queue_music = []

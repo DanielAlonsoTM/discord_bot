@@ -21,21 +21,25 @@
         * Connect
         * Speak
 
-### Python and pip version
+### Server Requirements to install
 * Python: 3.11.2
 * pip3: 22.3.1
+* ffmpg
+```sh
+sudo apt install python3 python3-pip ffmpeg
+```
 
 ### Packages to install
 * discord: 2.2.2
 * jproperties: 2.1.1
 * validators: 0.20.0
-* youtube-dl: 2021.12.17
+* yt-dlp: 2023.2.17
 * PyNaCl: 1.5.0
 
 ### Install Packages
 Command to install: 
 ```sh
-pip3 install discord jproperties validators youtube-dl pynacl
+pip3 install discord==2.2.2 jproperties==2.1.1 validators==0.20.0 yt-dlp==2023.2.17 pynacl==1.5.0
 ```
 
 #### Problems with youtube-dl
