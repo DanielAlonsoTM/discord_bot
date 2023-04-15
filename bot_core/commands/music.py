@@ -34,6 +34,11 @@ class Music(commands.Cog, name='Music Commands'):
     async def play(self, ctx, url):
         # Delete all files stored in tmp folder
         clean_tmp()
+        
+        voice_client = ctx.message.guild.voice_client
+
+        if voice_client.is_playing():
+            voice_client.resume()
 
         song: Song = Song()
 
