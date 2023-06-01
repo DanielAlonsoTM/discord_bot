@@ -1,6 +1,6 @@
 from discord.ext import commands
 from bot_core.engines.ytdl import YTDLSource
-from utils.tmp_handler import clean_tmp
+from utils.directory_handler import clean_tmp
 
 
 class Music(commands.Cog, name='Music Commands'):
