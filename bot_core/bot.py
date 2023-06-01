@@ -3,13 +3,13 @@ from discord.ext import commands
 from jproperties import Properties
 from bot_core.commands.music import Music
 from bot_core.commands.chat import Chat
-from utils.tmp_handler import check_tmp_exist
+from utils.directory_handler import check_directories_exist
 # from bot_core.listeners.kick import listener_kick
 
 
 def run_discord_bot():
     # Create temporary folder
-    check_tmp_exist()
+    check_directories_exist()
     
     # Get token value
     configs = Properties()
