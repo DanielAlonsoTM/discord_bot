@@ -34,12 +34,8 @@ class Music(commands.Cog, name='Music Commands'):
     async def play(self, ctx, url):
         # Delete all files stored in tmp folder
         clean_tmp()
-        
-        voice_client = ctx.message.guild.voice_client
 
-        if voice_client.is_playing():
-            voice_client.resume()
-
+        # Create empty object song
         song: Song = Song()
 
         try:
@@ -52,9 +48,16 @@ class Music(commands.Cog, name='Music Commands'):
                 song.url = player.url
                 song.played = False
 
-                # Play song
-                ctx.voice_client.play(player, after=lambda e: print(
-                    f'Player error: {e}') if e else None)
+                # Check if already playing something
+                voice_client = ctx.message.guild.voice_client
+
+                if voice_client.is_playing():
+                    queue_music.append(Song())
+                    
+                else:
+                    # Play song
+                    ctx.voice_client.play(player, after=lambda e: print(
+                        f'Player error: {e}') if e else None)
 
             # Send message to channel
             await ctx.send('**Now playing:** {}'.format(player.title))
