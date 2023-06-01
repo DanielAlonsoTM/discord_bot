@@ -30,16 +30,18 @@ sudo apt install python3 python3-pip ffmpeg
 ```
 
 ### Packages to install
-* discord: 2.2.2
-* jproperties: 2.1.1
-* validators: 0.20.0
-* yt-dlp: 2023.2.17
-* PyNaCl: 1.5.0
+* discord                   2.2.2
+* jproperties               2.1.1
+* validators                0.20.0
+* yt-dlp                    2023.2.17
+* PyNaCl                    1.5.0
+* pyinstaller               5.11.0
+* pyinstaller-hooks-contrib 2023.3
 
 ### Install Packages
 Command to install: 
 ```sh
-pip3 install discord==2.2.2 jproperties==2.1.1 validators==0.20.0 yt-dlp==2023.2.17 pynacl==1.5.0
+pip3 install discord==2.2.2 jproperties==2.1.1 validators==0.20.0 yt-dlp==2023.2.17 pynacl==1.5.0 pyinstaller==5.11.0 pyinstaller-hooks-contrib==2023.3
 ```
 
 #### Problems with youtube-dl
@@ -47,4 +49,10 @@ In case to have problems with this package, follow the next steps to install a s
 ```sh
 pip3 uninstall yt-dlp
 python3 -m pip install yt-dlp==2023.2.17
+```
+
+## Build executable
+```sh
+pyinstaller main.py --onefile
+chmod +x main
 ```

@@ -3,3 +3,6 @@ __pycache__/
 *.py[cod]
 resources/app-config.properties
 tmp/
+*.spec
+build
+dist
