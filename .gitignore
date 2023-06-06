@@ -1,8 +1,8 @@
 .idea/
 __pycache__/
 *.py[cod]
-resources/app-config.properties
 tmp/
+resources/
 *.spec
 build
 dist
