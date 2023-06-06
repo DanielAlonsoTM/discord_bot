@@ -1,4 +1,4 @@
-# Discord Bot
+# Discord Bot (ver 0.0.1)
 
 ### Necessary permissions
 * Scopes
@@ -53,7 +53,6 @@ python3 -m pip install yt-dlp==2023.2.17
 
 ## Build executable
 ```sh
-pyinstaller main.py --onefile
 pyinstaller main.py --clean --onefile --name bot-<version>
 chmod +x file_name
 ```
