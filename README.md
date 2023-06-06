@@ -54,5 +54,6 @@ python3 -m pip install yt-dlp==2023.2.17
 ## Build executable
 ```sh
 pyinstaller main.py --onefile
-chmod +x main
+pyinstaller main.py --clean --onefile --name bot-<version>
+chmod +x file_name
 ```
