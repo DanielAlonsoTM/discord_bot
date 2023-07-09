@@ -1,4 +1,6 @@
-# Discord Bot (ver 0.0.1)
+# Discord Bot
+
+### Version: 0.0.1
 
 ### Necessary permissions
 * Scopes
