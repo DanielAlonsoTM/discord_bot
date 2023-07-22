@@ -55,6 +55,12 @@ python3 -m pip install yt-dlp==2023.2.17
 
 ## Build executable
 ```sh
+# Build file
 pyinstaller main.py --clean --onefile --name bot-<version>
+
+# Give permissions
 chmod +x file_name
+
+# Copy file and set owner
+sudo cp dist/bot-0.0.1 /home/discord_bot/Applications/ && sudo chown discord_bot:discord_bot /home/discord_bot/Applications/bot-0.0.1
 ```
