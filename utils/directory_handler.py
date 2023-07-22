@@ -1,6 +1,9 @@
-from os import listdir, path, remove, mkdir
+from os import listdir, path, remove, mkdir, getcwd
 
+# Temporary folder name
 dir_tmp = 'tmp'
+
+# Resource folder and config file
 dir_resources = 'resources'
 config_file_name = 'app-config.properties'
 
@@ -58,3 +61,8 @@ def check_config_file():
 
         config_file = open(f'{dir_resources}/{config_file_name}', 'w')
         config_file.write('TOKEN=')
+
+
+def get_current_path():
+    # Path where the script is running
+    return getcwd()
