@@ -15,6 +15,7 @@ def run_discord_bot():
     current_path = get_current_path()
 
     properties_path = str(f'{current_path}/resources/app-config.properties')
+    print(f'Properties path: {properties_path}')
 
     # Get token value
     configs = Properties()
